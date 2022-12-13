@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+    <item>
+        <title>이미지 01</title>
+        <url>../img/01.jpg</url>
+        <detail>
+            <h2>1번 고양이</h2>
+            <img src="" />
+        </detail>
+    </item>
+    <item>
+        <title>이미지 02</title>
+        <url>../img/02.jpg</url>
+        <detail>
+            <h2>2번 고양이</h2>
+            <img src="" />
+        </detail>
+    </item>
+    <item>
+        <title>이미지 03</title>
+        <url>../img/03.jpg</url>
+        <detail>
+            <h2>3번 고양이</h2>
+            <img src="" />
+        </detail>
+    </item>
+    <item>
+        <title>이미지 04</title>
+        <url>../img/04.jpg</url>
+        <detail>
+            <h2>4번 고양이</h2>
+            <img src="" />
+        </detail>
+    </item>
+</items>

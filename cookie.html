@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="popup">
+        <img src="./img/01.jpg" alt="">
+        <div>
+            <input type="checkbox">오늘하루동안보지않기
+            <button>닫기</button>
+        </div>
+    </div>
+    
+    <script>
+       
+
+            const elCheck = document.querySelector('input[type=checkbox]'),
+                elBtn = document.querySelector('button'),
+                elPopup = document.querySelector('.popup')
+                
+                elBtn.addEventListener('click',function(){                    
+                    console.log(elCheck.checked)
+                        if(elCheck.checked) {
+                            let toDay = new Date();
+                            toDay.setSeconds(toDay.getSeconds() + 10);
+                            // toDay.setDate(toDay.getDate() + 1); 24시간동안
+                            console.log(typeof toDay) // 값이 object라서 
+                            document.cookie = `popup=가격할인이벤트!;expires=${toDay.toUTCString()}` // string값으로 변환 
+                            console.log(document.cookie.match('가격할인이벤트'))
+                        }
+                    elPopup.style = "display:none"
+                })
+                console.log(document.cookie)
+                if(document.cookie.match('가격할인이벤트')){
+                    elPopup.style = "display:none"
+                }else{
+                    elPopup.style = "display:block"
+                }
+                
+    </script>
+</body>
+</html>

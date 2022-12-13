@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        /* ::-webkit-scrollbar-button{
+            background-color:  purple;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: blue;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: green;
+        }
+
+        ::-webkit-scrollbar-track-piece{
+            background-color: yellow;
+        } */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        main{
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: 0;
+            transition: 1s;
+        }
+
+        section
+        {width: 100%; height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10rem;
+        }
+        section:nth-child(even){
+            background-color: #ddd;
+        }
+    </style>
+    <main>        
+        <section>content 01</section>
+        <section>content 02</section>
+        <section>content 03</section>
+        <section>content 04</section>
+        <section>content 05</section>
+        <section>content 06</section>
+    </main>
+
+    <script>
+        const elMain = document.querySelector('main'),
+        elSec = document.querySelectorAll('main section')
+
+        document.body.style = `height:${elMain.offsetHeight}px`
+        console.log(elMain.offsetHeight)
+
+        let offset = [];
+        elSec.forEach(function(el){
+            offset.push(el.offsetTop);
+        })
+        console.log(offset)
+        console.log(window.innerHeight)
+        console.log(document.body.scrollHeight)
+
+        let play = null;
+        let idx = 0;
+        let pos = {y:0,y2:0}
+    
+        // window.onload =function(){
+            window.addEventListener('scroll',function(){
+
+                clearTimeout(play)
+                play = setTimeout(function(){   
+                    pos.y = window.pageYOffset; 
+                    pos.y > pos.y2 ?idx++ : idx--
+                    pos.y2 = pos.y;
+                    console.log(idx)
+                elMain.style = `transform:translateY(-${offset[idx]}px)`
+                    
+                    },100)
+            })
+            
+        // }
+        
+
+
+        
+    </script>
+</body>
+</html>

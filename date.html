@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="date-1">
+        수업종료 D-day : <span></span>
+    </div>
+
+    <div class="date-2">
+        수업참여일수 : <span></span>
+    </div>
+    <div class="date-3">
+        <span class="span3"></span>수업참여일수 : </span> <button style="width: 50px; height: 15px;"></button>
+    </div>
+
+    <script>
+        let date = new Date();
+        console.log(date)
+        console.log(date.getFullYear())
+        console.log(date.getMonth()+1) //1월은 인덱스 0번이므로, +1
+        console.log(date.getDate())
+        console.log(['일','월','화','수','목','금','토'][date.getDay()])
+        console.log(date.getHours())
+        console.log(date.getMinutes())
+        console.log(date.getSeconds())
+        console.log(date.getTime()) //unix초 70년도01월01일기준으로 발생한 초 
+        console.log(24*60*60*1000) //하루에 해당하는 초
+        console.log(date.getTime() / (24*60*60*1000)) //unix초 70년도01월01일기준으로 경과 일자
+
+        const toDay = new Date();
+        let startDay = new Date('2022-11-02 09:30:00')
+        let endDay = new Date('2023-04-20 18:20:00')
+        let oneDay = 24*60*60*1000;
+        console.log(Math.floor((endDay-toDay) / oneDay))
+        let dDay = Math.floor((endDay-toDay) / oneDay);
+        document.querySelector('.date-1 span').innerHTML = dDay+'일';
+        let week = ['일','월','화','수','목','금','토']
+        console.log(['일','월','화','수','목','금','토'][date.getDay(dDay)])
+        // 0,6 빼고 계산.
+        let totalDay = [];
+        for (let i=1 ; i < (dDay/7) ; i++){ // 수업종료 D-day의 총 일수만큼 반복
+            // console.log(week[i])
+            for(let j=0;j<week.length;j++){ //0~6까지 7번반복
+                    if(j!=0 && j!=6){ // 일,토 제외하고 콘솔작성
+                // console.log(week[j])
+                let abc = week[j];
+                totalDay.push(abc)
+                }
+            }
+        }
+
+
+    
+
+        console.log(totalDay)
+        console.log(totalDay.length)
+
+        console.log((dDay/7)*5)
+        // console.log(totalDay.length)
+        
+        // console.log(week.length) // 7
+        // console.log(Math.floor(dDay/7)) // 18
+        // week.forEach(function(key){
+        //     console.log(0)
+        //     console.log()
+        //     // console.log(week[2])
+        //     // console.log(week[3])
+            
+        // });
+
+        document.querySelector('.date-1 span').innerHTML = dDay + '일'
+        document.querySelector('.date-2 span').innerHTML = totalDay.length + '일'
+
+            const btn = document.querySelector('button')
+            const elSpan = document.querySelector('.span3')
+
+        btn.addEventListener('click',function(){
+            if(startDay < toDay && endDay > toDay){
+                alert('수강 접수 완료')
+            }else{
+                alert('수강 접수 불가')
+            }
+        })
+        
+        // console.log(endDay.getTime())
+        </script>
+</body>
+</html>

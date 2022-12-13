@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body{height: 12000px;}
+
+     p  {
+        padding:300px 0;font-size: 10rem;
+        text-align: center;
+        margin: 0;
+        color:black;
+        border-bottom: 1px solid black;
+     }
+     .top {
+        margin-top: 1000px;
+        border-top: 1px solid black;
+        color:black;
+     }
+        p:nth-child(even){
+        background-color: #ddd;
+            }
+            button{
+                width: 80px;
+                height:70px;
+                background-color:cornflowerblue;
+                color:#fff;
+                font-size: 2.5rem;
+                margin: 10px 15px 0;
+                border-radius: 20px;
+                cursor: pointer;
+            }
+            button:hover{
+                color:yellow;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+    </style>
+<body>
+
+    <div style="position: fixed;
+    top:0;
+    left:0;
+    display: flex;
+    ">
+
+        <button>0</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    </div>
+    <p class="top">0</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p>
+    <p>11</p>
+    <p>12</p>
+    
+    <script>
+        // let pos = {y:0,y2:0}
+        // window.addEventListener('scroll',function(){
+        //     pos.y = window.pageYOffset
+        //     if(pos.y > pos.y2){
+        //         console.log('Down')
+        //     }else{
+        //         console.log('Up')
+        //     }
+        //     pos.y2 = pos.y            
+        // })
+        const elP = document.querySelectorAll('p')
+        let pos = {y:0,y2:0,state:true}
+        let idx = 0;
+        let play = null;
+        let tagValue;
+
+                window.addEventListener('scroll',function(){                    
+                        
+                        // clearTimeout(play)
+
+                        // console.log(idx)
+                        
+                        // console.log(pos.y)
+                        pos.y = window.pageYOffset;
+                        pos.state = (pos.y > pos.y2) ? true:false;
+                                         
+
+                        clearTimeout(play)
+                        play = setTimeout(function(){
+                        if(pos.y > pos.y2){
+                           if(idx<12) {idx++}
+                            tagValue = 'red'
+
+                        }
+                        else{
+                            if(idx > 0){idx--}
+                            tagValue = 'black'
+                            // console.log(idx)
+                        }    
+                        pos.y2 = pos.y 
+                        // console.log(pos.y);     
+                        // console.log(pos.y2)                       
+                        
+                            // console.log(idx)
+
+                            
+                            },0)
+
+                            let offset = elP[idx].offsetTop - window.innerHeight;
+                            if (offset < window.pageYOffset){
+                                console.log(offset)
+                                console.log(window.pageYOffset)
+                                console.log('컨텐츠'+idx)
+                            }
+                            
+
+
+                            // console.log(
+                            //     '콘텐츠03' + elP[3].offsetTop,
+                            //     window.pageYOffset,
+                            //     elP[3].clientHeight,
+                            //     window.screenY,
+                            //     window.screenTop,
+                            //     window.innerHeight
+                            // )
+
+                            elP.forEach(function(key){
+                                elP[idx].tagValue = [key].offsetTop-(window.innerHeight*0.5) < window.pageYOffset? 'red' : 'black'
+                                // if(idx >= 0 && idx <= 12){
+                                    elP[idx].style.color = tagValue
+                                // };
+                            })
+
+                            
+                    // clearTimeout(num);
+                    
+                    // console.log(idx)
+                    }
+                )
+                
+
+
+                const elBtn = document.querySelectorAll('button')
+
+                elBtn.forEach(function(el,key){
+                    el.addEventListener('click',function(){
+                        window.scrollTo({
+                                left:0,
+                                top:elP[key].offsetTop,
+                                behavior:"smooth"
+                            })
+                    })
+                })
+            
+            
+            console.log(
+                document.body.scrollHeight
+            )
+        
+    </script>
+</body>
+</html>

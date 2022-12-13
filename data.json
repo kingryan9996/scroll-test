@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "id": "0",
+      "url": "./img/01.jpg",
+      "title": "고양이01",
+      "detail": ""
+    },
+    {
+      "id": "1",
+      "url": "./img/02.jpg",
+      "title": "고양이02",
+      "detail": ""
+    },
+    {
+      "id": "2",
+      "url": "./img/03.jpg",
+      "title": "고양이03",
+      "detail": ""
+    },
+    {
+      "id": "3",
+      "url": "./img/04.jpg",
+      "title": "고양이04",
+      "detail": ""
+    },
+    {
+      "id": "4",
+      "url": "./img/05.jpg",
+      "title": "고양이05",
+      "detail": ""
+    },
+    {
+      "id": "5",
+      "url": "./img/06.jpg",
+      "title": "고양이06",
+      "detail": ""
+    },
+    {
+      "id": "6",
+      "url": "./img/07.jpg",
+      "title": "고양이07",
+      "detail": ""
+    },
+    {
+      "id": "7",
+      "url": "./img/08.jpg",
+      "title": "고양이08",
+      "detail": ""
+    },
+    {
+      "id": "8",
+      "url": "./img/09.jpg",
+      "title": "고양이09",
+      "detail": ""
+    },
+    {
+      "id": "9",
+      "url": "./img/10.jpg",
+      "title": "고양이10",
+      "detail": ""
+    }
+  ]
+}

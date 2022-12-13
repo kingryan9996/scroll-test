@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article class="gallery">
+      <div></div>
+    </article>
+    <script defer src="./index.js"></script>
+  </body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: darkgoldenrod;
+    }
+
+    .gallery {
+      margin: 100px auto;
+      width: 750px;
+      height: 550px;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+    }
+
+    img {
+      border-radius: 15px;
+      width: 700px;
+      height: 500px;
+      object-fit: cover;
+      animation-name: catAni;
+      animation-duration: 2500ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+    @keyframes catAni {
+      0% {
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</html>

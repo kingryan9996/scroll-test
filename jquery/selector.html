@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .fade div {
+      position: relative;
+    }
+    .fade div img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30%;
+    }
+  </style>
+  <body>
+    <article class="fade">
+      <h2>FadeSlide</h2>
+      <div>
+        <img src="../img/01.jpg" alt="" />
+
+        <img src="../img/02.jpg" alt="" />
+        <img src="../img/03.jpg" alt="" />
+      </div>
+    </article>
+    <script>
+      //hide:display:none , show:display:block;
+      //toggle : 토글 , slideToggle : 슬라이드형식 토글
+      // $(".faq div").hide(); display:block
+      //  " "" " 큰따옴표안에 큰따옴표를 쓰면 인식이 잘 안됨.
+      // " '' "  or  ' "" ' 방식으로 작성하면됨.
+
+      $(".fade img").not(":first").hide(1000);
+
+      let num = 0,
+        fadeInterval;
+
+      fadeInterval = setInterval(function () {
+        $(".fade img").eq(num).fadeOut(1000);
+        console.log(num);
+        num++;
+        if (num > 2) {
+          num = 0;
+        }
+        console.log(num);
+        $(".fade img").eq(num).fadeIn(1000);
+        console.log(num);
+      }, 2000);
+      // $(".fade img").not(":first").hide(1000);
+      console.log(num);
+
+      $(".faq h2").click(function () {
+        $(this).find("img").slideToggle();
+        console.log("클릭");
+      });
+    </script>
+
+    <article id="effect" class="effect">
+      <h2 id="h2" class="ui-state-default ui-corner-all">Effect</h2>
+      <div>
+        blind, bounce, clip, drop, explode, fade fold, highlight, puff, pulsate,
+        scale, shake, size, transfer
+      </div>
+    </article>
+    <style>
+      .effect {
+        margin: 400px 0;
+      }
+      .effect div {
+        border: 1px solid black;
+        padding: 40px;
+        width: 400px;
+      }
+      .ui-effects-transfer {
+        border: 2px dotted gray;
+        background-color: red;
+      }
+    </style>
+    <script>
+      // scale(percent:50), transfer, size (width,height)
+      let option = { to: ".effect h2", className: "ui-effects-transfer" };
+      $(".effect div").effect("transfer", option, 500);
+
+      //   function callback() {
+      //     setTimeout(function () {
+      //       $(".effect > div").removeAttr("style").hide().fadeIn();
+      //     }, 1000);
+      //   }
+      $(".effect div")
+      .animate({marginLeft: 200,},1000,"easeOutBounce")
+      .animate({marginLeft: 0,},1000,"easeOutBounce");
+
+    //   slideToggle, slideDown, slideUp
+    //   fadeIn, fadeOut, fadeToggle
+    //   animate,
+    //   effect
+    </script>
+  </body>
+</html>
