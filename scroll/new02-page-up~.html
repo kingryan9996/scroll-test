@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        body {font-family: 'Montserrat', sans-serif;}
+        /* ::-webkit-scrollbar{
+            display: none;
+        } */
+        /* ::-webkit-scrollbar-button{
+            background-color:  purple;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: blue;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: green;
+        }
+
+        ::-webkit-scrollbar-track-piece{
+            background-color: yellow;
+        } */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        main{
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: 0;
+            transition: 1s;
+            display: flex;
+        }
+
+        section
+        {
+            flex-shrink: 0;
+            width: 100%; height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;       
+        text-transform:capitalize;
+        
+        
+        }
+       
+        section:nth-child(odd) {
+            background-color: rgba(74, 168, 216, 0.6);
+            color:rgba(0, 0, 0, 0.8);
+        }
+        
+        section:nth-child(even){
+            background-color: rgba(202, 180, 84, 0.6);
+            color: rgba(255, 255, 255, 0.8) 
+        }
+        aside{
+            
+            display: flex;
+            position: fixed;
+            right: 50%;
+            bottom: 3%;
+            transform: translateX(50%);
+            z-index: 99;
+        }
+
+        aside button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: block;
+            padding: 0;
+            margin: 10px 0;
+            border: none;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        aside button.active {
+            background-color: rgba(223, 79, 22, 0.932);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+    </style>
+    <aside>        
+    </aside>
+    <main>        
+        <section>content 01</section>
+        <section>content 02</section>
+        <section>content 03</section>
+        <section>content 04</section>
+        <section>content 05</section>
+        <section>content 06</section>
+    </main>
+    
+
+    <script>
+        const elMain = document.querySelector('main'),
+        elSec = document.querySelectorAll('section'),
+        elAside = document.querySelector('aside')
+
+        let move = 0;
+        let offset = [];
+        let key = 0;
+        
+
+        // window.pageXOffset
+        elSec.forEach(function(el,key){
+            // offset.push(elSec[key].scrollWidth)
+            // offset.push(elSec[key].offsetWidth)
+            offset.push(elSec[key].offsetLeft)
+            // offset.push(elSec[key].scrollLeft)
+            // offset.push('111')
+            // console.log(offset)
+            // console.log(offset[5])
+        })
+        
+
+       
+        
+        
+
+
+        elSec.forEach(function(el,key){
+            offset.push(elSec[key].offsetLeft)
+        })
+
+        let num = 0;
+
+        elSec.forEach(function(elSection,key){
+            elAside.innerHTML += `<button>${[key+1]}</button>`
+            elSection.addEventListener('mousewheel',function(num){            
+                animation(key) 
+            })
+
+            })
+            
+            
+            const elBtn = document.querySelectorAll('aside button')
+
+            elBtn.forEach(function(el,key){
+                el.addEventListener('click',function(){
+                    animation(key)
+                })
+            })
+
+                function animation (key) {
+                    elBtn.forEach(function(el){
+                        if (key > 0 && key<5){{
+                        el.classList.remove('active')}}
+                    })
+
+                if(event.wheelDelta < 0){
+                    // console.log('00')
+                    // console.log(key)
+                    // console.log(elSec[num].offsetLeft)
+                    if (key<5){
+                    move = elSec[key].nextElementSibling.offsetLeft
+                    console.log(key)
+                    
+                    console.log(event.wheelDeltaY)
+                    console.log(event.wheelDelta)
+                    // console.log(move)
+                    // console.log(offset[key])
+                    // elMain.style = `transform:translateX(-${elSec[num].offsetLeft}px)`
+                        // move = elSec[key].nextElementSibling.offsetLeft
+                        if(key > 4) {
+                            el.classList.remove('active')
+                        }
+                        elBtn[key+1].classList.add('active')}
+
+                }else if(event.wheelDelta > 0){
+                    // console.log('11')
+                    // elMain.style = `transform:translateX(0px)`
+                        move = elSec[key].previousElementSibling.offsetLeft // 형제요소를 찾는 방법
+                        console.log(event.wheelDelta)
+                        // console.log(event.wheelDelta)
+                        // console.log(move)
+                        // elBtn[key].classList.remove('active')
+                        // // num = key;                        
+                        if(key == 0) {
+                            el.classList.remove('active')
+                        }
+                        elBtn[key-1].classList.add('active')             
+                    }else{
+                        // console.log('33')
+                        move = elSec[key].offsetLeft;
+                        // elBtn[num].classList.remove('active')
+                        // num = key;                        
+                        elBtn[key].classList.add('active')
+                        
+                    };
+                    elMain.style = `transform:translateX(-${move}px)`
+
+
+                    }
+                    elBtn[0].classList.add('active')               
+    </script>
+</body>
+</html>

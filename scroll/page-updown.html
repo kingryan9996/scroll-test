@@ -9,9 +9,9 @@
 <body>
     <style>
 
-        ::-webkit-scrollbar{
+        /* ::-webkit-scrollbar{
             display: none;
-        }
+        } */
         /* ::-webkit-scrollbar-button{
             background-color:  purple;
         }
@@ -65,38 +65,109 @@
         const elMain = document.querySelector('main'),
         elSec = document.querySelectorAll('main section')
 
-        document.body.style = `height:${elMain.offsetHeight}px`
-        console.log(elMain.offsetHeight)
-
-        let offset = [];
-        elSec.forEach(function(el){
-            offset.push(el.offsetTop);
-        })
-        console.log(offset)
-        console.log(window.innerHeight)
-        console.log(document.body.scrollHeight)
-
         let play = null;
         let idx = 0;
         let pos = {y:0,y2:0}
+        let offset = [];
+        let new4 = {a:0,b:0};
+        document.body.style = `height:${elMain.offsetHeight}px`
+        console.log(elMain.offsetHeight)
+
+       
+        elSec.forEach(function(el){
+            offset.push(el.offsetTop);
+        })
+        // console.log(offset)
+        // console.log(window.innerHeight)
+        // console.log(document.body.scrollHeight)
+        
+
+        
     
         // window.onload =function(){
             window.addEventListener('scroll',function(){
 
+                new4.a = offset[idx]
+                    console.log(new4.a,'a')
+                    // new4.a > new4.b ? console.log('good') : console.log('bad')3
+                    console.log(new4.b,'b')
+                    new4.b = new4.a
+                    console.log(new4.b,'b')
+
                 clearTimeout(play)
+                if(pageYOffset > offset[idx]){
+                    
                 play = setTimeout(function(){   
+                    console.log(pageYOffset,'pageYOffset')
+                    console.log(offset[idx],'offset[idx]')                    
                     pos.y = window.pageYOffset; 
                     pos.y > pos.y2 ?idx++ : idx--
                     pos.y2 = pos.y;
-                    console.log(idx)
+                    // console.log(idx)
+                    
+                    // new4.a = offset[idx]
+                    // console.log(new4.a,'a')
+                    // // new4.a > new4.b ? console.log('good') : console.log('bad')3
+                    // console.log(new4.b,'b')
+                    // new4.b = new4.a
+                    // console.log(new4.b,'b')
+                            // console.log(new2,'22')
+                            
+
+
+                elMain.style = `transform:translateY(-${offset[idx]}px)`
+                window.scrollTo({
+                                left:0,
+                                top:offset[idx],
+                                behavior:"smooth"
+                            })
+                    
+                    },100)
+                }
+                else if(pageYOffset < offset[idx])
+                {
+                    play = setTimeout(function(){   
+                    console.log(pageYOffset,'pageYOffset')
+                    console.log(offset[idx],'offset[idx]')                    
+                    pos.y = window.pageYOffset; 
+                    pos.y > pos.y2 ?idx++ : idx--
+                    pos.y2 = pos.y;
+                    // console.log(idx)
+
+                    new4.a = offset[idx]
+                    console.log(new4.a,'a')
+                    // new4.a > new4.b ? console.log('good') : console.log('bad')
+                    new4.b = new4.a
+                    console.log(new4.b,'b')
+
                 elMain.style = `transform:translateY(-${offset[idx]}px)`
                     
                     },100)
+                    window.scrollTo({
+                                left:0,
+                                top:offset[idx],
+                                // behavior:"smooth"
+                            })
+                            
+                            console.log(elSec[idx].scrollTop)
+                            console.log(elSec[idx].pageYOffset)
+                            console.log(elSec[idx].scrollHeight)
+                console.log('aa')
+                }
             })
             
         // }
         
-
+        elMain.style = `transform:translateY(-${offset[0]}px)`
+        // clearTimeout(play)
+        window.scrollTo({
+                                left:0,
+                                top:0,
+                                behavior:"smooth"
+                            })
+                            
+                            // console.log(elMain[0].offsetTop)
+                            
 
         
     </script>
